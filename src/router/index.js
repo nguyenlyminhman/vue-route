@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "../views/Home.vue";
-import About from "../views/About.vue";
+ import Home from "../views/Home.vue";
+
 
 Vue.use(Router);
 
@@ -13,9 +13,29 @@ export default new Router({
             component: Home
         },
         {
+            path: "/brazil",
+            name: "brazil",
+            component: ()=> import(/* webpackChunkName: "brazil" */ "../views/Brazil")
+        },
+        {
+            path:"/hawaii",
+            name:"hawaii",
+            component: ()=> import(/* webpackChunkName: "hawaii" */ "../views/Hawaii")
+        },
+        {
+            path:"/jamaica",
+            name:"jamaica",
+            component: ()=> import(/* webpackChunkName: "jamaica" */ "../views/Jamaica")
+        },
+        {
+            path:"/panama",
+            name:"panama",
+            component: ()=> import(/* webpackChunkName: "panama" */ "../views/Panama")
+        },
+        {
             path:"/about",
             name:"about",
-            component: About
+            component: ()=> import(/* webpackChunkName: "about" */ "../views/About")
         }
     ]
 })
