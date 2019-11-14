@@ -6,6 +6,7 @@ import Router from "vue-router";
 Vue.use(Router);
 
 export default new Router({
+    linkActiveClass: "ecec",
     routes:[
         {
             path:"/",
@@ -36,6 +37,11 @@ export default new Router({
             path:"/about",
             name:"about",
             component: ()=> import(/* webpackChunkName: "about" */ "../views/About")
+        },
+        {
+            path:"/destination-detail",
+            name:"DestinationDetails",
+            component: ()=> import(/* webpackChunkName: "destination-details" */ "../views/DestinationDetails")
         }
     ]
 })
