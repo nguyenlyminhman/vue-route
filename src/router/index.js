@@ -6,42 +6,25 @@ import Router from "vue-router";
 Vue.use(Router);
 
 export default new Router({
-    linkActiveClass: "ecec",
+    mode: "history",
     routes:[
         {
             path:"/",
             name:"home",
-            component: Home
-        },
-        {
-            path: "/brazil",
-            name: "brazil",
-            component: ()=> import(/* webpackChunkName: "brazil" */ "../views/Brazil")
-        },
-        {
-            path:"/hawaii",
-            name:"hawaii",
-            component: ()=> import(/* webpackChunkName: "hawaii" */ "../views/Hawaii")
-        },
-        {
-            path:"/jamaica",
-            name:"jamaica",
-            component: ()=> import(/* webpackChunkName: "jamaica" */ "../views/Jamaica")
-        },
-        {
-            path:"/panama",
-            name:"panama",
-            component: ()=> import(/* webpackChunkName: "panama" */ "../views/Panama")
+            component: Home,
+            props: true
         },
         {
             path:"/about",
             name:"about",
-            component: ()=> import(/* webpackChunkName: "about" */ "../views/About")
+            component: ()=> import(/* webpackChunkName: "about" */ "../views/About"),
+            props: true
         },
         {
-            path:"/destination-detail",
+            path:"/detail/:slug",
             name:"DestinationDetails",
-            component: ()=> import(/* webpackChunkName: "destination-details" */ "../views/DestinationDetails")
+            component: ()=> import(/* webpackChunkName: "destination-details" */ "../views/DestinationDetails"),
+            props: true
         }
     ]
 })

@@ -2,12 +2,12 @@
     <div class="home">
         <h1>All Destination</h1>
         <div class="destination">
-        <div class="" v-for="destination in destinations" :key="destination.name">
-            <router-link :to="{name:'DestinationDetails', params: {id: destination.id}}">
+        <div class="destination-dt" v-for="destination in destinations" :key="destination.name">
+            <router-link :to="{name:'DestinationDetails', params: {slug: destination.slug}}">
                 <h2>{{destination.name}}</h2>
             </router-link>
         <figure>
-            <router-link :to="{name:'DestinationDetails', params: {id: destination.id}}">
+            <router-link :to="{name:'DestinationDetails', params: {slug: destination.slug}}">
                 <img :src="require(`@/assets/${destination.image}`)" alt="destination.name">
             </router-link>
         </figure>
@@ -30,12 +30,23 @@ export default {
 </script>
 <style scoped>
 .home {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .destination{
-    display: inline-flexbox;
+    display: flex;
     justify-content: space-between;
+}
+
+a:hover,
+a:visited
+{
+    text-decoration: underline;
+}
+
+img{
+    width: 75%;
+    height: 75%;
 }
 </style>

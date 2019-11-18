@@ -1,7 +1,7 @@
 <template>
   <div id="app">
  <Navigation />
-    <router-view />
+    <router-view :key="$route.path"/>
   </div>
 </template>
 
@@ -22,11 +22,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-#nav a { 
-  padding: 0 5px;
-  text-decoration: none;
-}
-#nav a.ecec { 
-  color: red;
-}
+
 </style>
