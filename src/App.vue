@@ -27,12 +27,12 @@ export default {
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: opacity 1s, transform 1s;
+  transition: opacity 0.5s, transform 0.5s;
 }
 
 .slide-enter,
 .slide-leave-to {
   opacity: 0;
-  transform: translateX(-30%);
+  transform: translateX(-50%);
 }
 </style>

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "../views/Home.vue";
+import store from "@/store";
 
 
 Vue.use(Router);
@@ -32,9 +33,24 @@ export default new Router({
                     component: () => import(/* webpackChunkName: "experience-details" */ "../views/ExperienceDetails"),
                     props: true
                 }
-            ]
+            ],
+            beforeEnter: (to, from, next) => {
+                const exist = store.destinations.find(
+                    destination => destination.slug === to.params.slug
+                )
+                if (exist) {
+                    next();
+                } else {
+                    next({ name: "notFound" });
+                }
+            }
         },
-
+        {
+            path: "/404",
+            alias: "*",
+            name: "notFound",
+            component: () => import(/* webpackChunkName: "notFound" */ "../views/NotFound"),
+        }
     ]
 })
 
