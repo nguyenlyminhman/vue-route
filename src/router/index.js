@@ -21,11 +21,21 @@ export default new Router({
             props: true
         },
         {
-            path:"/detail/:slug",
+            path:"/destination/:slug",
             name:"DestinationDetails",
             component: ()=> import(/* webpackChunkName: "destination-details" */ "../views/DestinationDetails"),
-            props: true
-        }
+            props: true,
+
+            children: [
+                {
+                    path:":experienceSlug",
+                    name:"ExperienceDetails",
+                    component: ()=> import(/* webpackChunkName: "experience-details" */ "../views/ExperienceDetails"),
+                    props: true
+                }
+            ]
+        },
+      
     ]
 })
 

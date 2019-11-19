@@ -16,13 +16,22 @@
             v-for="experience in destination.experiences"
             :key="experience.name"
              class="card">
-                <img :src="require(`@/assets/${experience.image}`)" :alt="experience.name">
+            <router-link :to="{
+                name: 'ExperienceDetails',
+                params: {experienceSlug: experience.slug}
+            }">
+                
+            
 
+                <img :src="require(`@/assets/${experience.image}`)" :alt="experience.name">
                 <span class="card__text">
                     {{experience.name}}
                 </span>
+            </router-link>
+            
             </div>
         </div>
+        <router-view :key="$route.path" />>
     </section>
 </div>
 
