@@ -1,34 +1,34 @@
-<template>   
-<nav id="nav">
-  <p class="logo">The Travel App</p>
-      <ul class="nav-links">
-        <li class="links">
-        <router-link to="/"> Home </router-link>
+<template>
+  <nav id="nav">
+    <p class="logo">The Travel App</p>
+    <ul class="nav-links">
+      <li class="links">
+        <router-link to="/">Home</router-link>
       </li>
       <li v-for="destination in destinations" :key="destination.name" class="link">
-        <router-link :to="{
+        <router-link
+          :to="{
           name: 'DestinationDetails',
           params: {slug: destination.slug}
-        }">
-        {{destination.name}}
-        </router-link>
+        }"
+        >{{destination.name}}</router-link>
       </li>
       <li class="links">
-        <router-link to="/about"> About </router-link>
+        <router-link to="/about">About</router-link>
       </li>
-      </ul>
-    </nav>
+    </ul>
+  </nav>
 </template>
 
 <script>
-import store from "@/store"
+import store from "@/store";
 export default {
-  data(){
-    return{
+  data() {
+    return {
       destinations: store.destinations
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>
@@ -36,15 +36,15 @@ export default {
   display: flex;
 }
 
-#nav a{
+#nav a {
   color: chocolate;
   text-decoration: none;
   font-weight: bold;
   padding: 0 10px;
-list-style-type: none;
+  list-style-type: none;
 }
 
-.nav-links{
+.nav-links {
   display: flex;
   list-style-type: none;
 }
@@ -58,7 +58,7 @@ list-style-type: none;
   text-decoration: underline;
 }
 
-.logo{
+.logo {
   font-size: 20px;
   color: purple;
   font-weight: bold;

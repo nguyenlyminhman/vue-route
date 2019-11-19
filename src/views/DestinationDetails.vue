@@ -1,104 +1,95 @@
 <template>
-<div>
+  <div>
     <section class="destination">
-        <h1>{{destination.name}}</h1>
-        <div class="destination-details">
-            <img :src="require(`@/assets/${destination.image}`)" :alt="destination.name" />  
-            <p> {{destination.description}}  </p>
-        </div>
+      <h1>{{destination.name}}</h1>
+      <div class="destination-details">
+        <img :src="require(`@/assets/${destination.image}`)" :alt="destination.name" />
+        <p>{{destination.description}}</p>
+      </div>
     </section>
-    <br/> <br/> <br/>
+    <br />
+    <br />
+    <br />
     <section class="experiences">
-        <h2>Top experiences {{destination.name}}</h2>
-
-        <div class="cards">
-            <div
-            v-for="experience in destination.experiences"
-            :key="experience.name"
-             class="card">
-            <router-link :to="{
+      <h2>Top experiences {{destination.name}}</h2>
+      <div class="cards">
+        <div v-for="experience in destination.experiences" :key="experience.name" class="card">
+          <router-link
+            :to="{
                 name: 'ExperienceDetails',
                 params: {experienceSlug: experience.slug}
-            }">
-                
-            
-
-                <img :src="require(`@/assets/${experience.image}`)" :alt="experience.name">
-                <span class="card__text">
-                    {{experience.name}}
-                </span>
-            </router-link>
-            
-            </div>
+            }"
+          >
+            <img :src="require(`@/assets/${experience.image}`)" :alt="experience.name" />
+            <span class="card__text">{{experience.name}}</span>
+          </router-link>
         </div>
-        <router-view :key="$route.path" />>
+      </div>
+      <router-view :key="$route.path" />>
     </section>
-</div>
-
-
-
+  </div>
 </template>
 
 <script>
-import store from '@/store.js';
+import store from "@/store.js";
 export default {
-
-    data(){
-        return {
-                // slug: this.$route.params.slug
-        }
-    },
-    props:{
-        slug:{
-            type: String,
-            required: true
-        }
-    },
-    computed:{
-        destination(){
-            return store.destinations.find(
-                destination => destination.slug === this.slug
-            );
-        }
+  data() {
+    return {
+      // slug: this.$route.params.slug
+    };
+  },
+  props: {
+    slug: {
+      type: String,
+      required: true
     }
-}
+  },
+  computed: {
+    destination() {
+      return store.destinations.find(
+        destination => destination.slug === this.slug
+      );
+    }
+  }
+};
 </script>
 <style scoped>
- img {
-     max-width: 600px;
-     height: auto;
-     width: 100%;
-     max-height: 400px;
- }
+img {
+  max-width: 600px;
+  height: auto;
+  width: 100%;
+  max-height: 400px;
+}
 
- .destination-details, .cards{
-     display: flex;
-    justify-content: space-between;
- }
+.destination-details,
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
 
- p{
-     margin: 0 40px;
-     font-size: 20px;
-     text-align: left;
- }
+p {
+  margin: 0 40px;
+  font-size: 20px;
+  text-align: left;
+}
 
- .card img {
-     max-height: 200px;
- }
+.card img {
+  max-height: 200px;
+}
 
- .card{
-     padding: 0 20px;
-     position: relative;
- }
+.card {
+  padding: 0 20px;
+  position: relative;
+}
 
- .card__text {
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     color: white;
-     font-size: 25px;
-     font-weight: bold;
-     text-decoration: none;
- }
+.card__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
 </style>
